@@ -1,0 +1,24 @@
+spring:
+  thymeleaf:
+    excluded-view-names: ''
+    cache: 'false'
+    content-type: text/html
+    check-template: 'true'
+    mode: HTML5
+    encoding: UTF-8
+    enabled: 'true'
+    prefix: classpath:/templates/
+    check-template-location: 'true'
+    suffix: .html
+  application:
+    name: spring-security
+  datasource:
+    name: defaultDataSource
+    password: 153500552Mysql.com
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://1.117.5.70:3306/jwt?serverTimezone=UTC
+#  resources:
+#    static-locations: classpath:templates/
+server:
+  port: '8080'

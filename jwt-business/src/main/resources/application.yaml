@@ -1,0 +1,16 @@
+# 应用名称
+spring:
+  application:
+    name: jwt-business
+  datasource:
+    name: defaultDataSource
+    password: 153500552Mysql.com
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://1.117.5.70:3306/jwt?serverTimezone=UTC
+# 应用服务 WEB 访问端口
+server:
+  port: 9090
+jwt:
+  signing:
+    key: fhdsafjlk839djhsafjhakjfdjafdsafdsfasfjsdkljfk
