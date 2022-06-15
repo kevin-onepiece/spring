@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 /**
  * @author foo
@@ -50,7 +51,16 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("client")
                 .secret("secret")
-                .authorizedGrantTypes("password")
-                .scopes("read");
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("read")
+                .and()
+                .withClient("resourceserver")
+                .secret("resourceserversecret");
+    }
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        // 指定可以调用 check_token 端点的条件 也可以是 permitAll()
+        security.checkTokenAccess("isAuthenticated()");
     }
 }
